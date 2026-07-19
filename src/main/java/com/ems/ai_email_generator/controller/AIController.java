@@ -9,7 +9,7 @@ import com.ems.ai_email_generator.service.AIService;
 
 @RestController
 @RequestMapping("/api/emails")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {"https://ai-email-generatorapp.netlify.app", "http://localhost:5173"})
 public class AIController {
 
     @Autowired
@@ -21,5 +21,4 @@ public class AIController {
         return aiService.generateEmail(request);
 
     }
-
 }
