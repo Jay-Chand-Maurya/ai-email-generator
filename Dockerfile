@@ -18,9 +18,13 @@ FROM eclipse-temurin:21-jdk-alpine
 
 WORKDIR /app
 
-# Exact JAR file name specify karein
-COPY --from=builder /app/target/ai-email-generator-0.0.1-SNAPSHOT.jar app.jar
+# JAR file ko copy karein aur rename karein
+COPY --from=builder /app/target/ai-email-generator-0.0.1-SNAPSHOT.jar /app/app.jar
+
+# Check karein ki file exist karti hai
+RUN ls -la /app/
 
 EXPOSE 8082
 
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+# Absolute path use karein
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
